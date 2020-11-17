@@ -80,15 +80,21 @@ function App() {
       </nav>
 
       <main>
+
         <Switch>
+          {music.length !== 0 ?
+        
           <Route
             exact
             path="/"
-          >
-            <Music musicList={music} />
-          </Route>
+            render={() => {
+              return <Music musicList={music} />;
+            }}
+          /> : null }
 
-          {music.length !== 0 ? (
+
+          {music.length !== 0 ? 
+          
             <Route
               exact
               path="/music/:id"
@@ -99,7 +105,7 @@ function App() {
                 return <Musicinfo musicList={music} />;
               }}
             />
-          ) : null}
+           : null}
 
           <Route
             exact
