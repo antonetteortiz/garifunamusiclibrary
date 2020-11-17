@@ -84,10 +84,10 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => {
-              return <Music musicList={music} />;
-            }}
-          />
+          >
+            <Music musicList={music} />
+          </Route>
+
           {music.length !== 0 ? (
             <Route
               exact
@@ -100,6 +100,7 @@ function App() {
               }}
             />
           ) : null}
+
           <Route
             exact
             path="/createmusic"
