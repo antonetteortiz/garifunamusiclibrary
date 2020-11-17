@@ -5,7 +5,8 @@ import "./Music.css";
 
 
 function MusicProfile(props) {
-    const remove = (artistName) => {
+  console.log("Beyonce > Riri")
+    const remove = (artistName) => { 
         let encodedArtistName = encodeURI(artistName)
         axios
           .delete(`https://garifunamusic.herokuapp.com/Music/${encodedArtistName}`, {
