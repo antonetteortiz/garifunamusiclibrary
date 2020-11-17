@@ -85,7 +85,6 @@ function App() {
           {music.length !== 0 ?
         
           <Route
-            exact
             path="/"
             render={() => {
               return <Music musicList={music} />;
