@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Route, Switch, Redirect } from "react-router-dom";
-import { Navbar } from "reactstrap";
+// import { Navbar } from "reactstrap";
 import "./App.css";
 import Music from "./components/Music";
 import Musicinfo from "./components/Musicinfo";
