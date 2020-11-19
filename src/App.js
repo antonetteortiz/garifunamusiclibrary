@@ -3,7 +3,7 @@ import { Link, Route, Switch, Redirect } from "react-router-dom";
 // import { Navbar } from "reactstrap";
 import "./App.css";
 import Music from "./components/Music";
-import Musicinfo from "./components/Musicinfo";
+// import Musicinfo from "./components/Musicinfo";
 import CreateMusic from "./components/CreateMusic";
 import UpdateMusic from "./components/UpdateMusic";
 
@@ -22,12 +22,16 @@ function App() {
 
     // Empty array bracket will only run useEffect once, because we are fetching
     //Argument passed here is saying everytime our argument changes the API will be called.
-  }, [music]);
+  }, []);
 
   const searchArtist = (e) => {
-    // e.preventDefault()
-    setArtistSearch(e.target.value);
+    e.preventDefault();
+    // console.log(e.target.value);
+
+    setArtistSearch(e.target.value.toLowerCase());
+    // console.log("state", artistSearch)
     if (artistSearch.length > 1) {
+      // console.log("!!!", music)
       let newArtistArr = music.filter((input) =>
         input.artistName.toLowerCase().includes(artistSearch)
       );
@@ -80,20 +84,21 @@ function App() {
       </nav>
 
       <main>
-
         <Switch>
-          {music.length !== 0 ?
+          <Route path="/">
+            <Music musicList={music} />
+          </Route>
+
+          {/* {music.length !== 0 ?
         
           <Route
             path="/"
             render={() => {
               return <Music musicList={music} />;
             }}
-          /> : null }
+          /> : null } */}
 
-
-          {music.length !== 0 ? 
-          
+          {music.length !== 0 ? (
             <Route
               exact
               path="/music/:id"
@@ -104,7 +109,7 @@ function App() {
                 return <Musicinfo musicList={music} />;
               }}
             />
-           : null}
+          ) : null}
 
           <Route
             exact

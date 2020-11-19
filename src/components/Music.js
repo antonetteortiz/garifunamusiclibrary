@@ -1,11 +1,10 @@
-import React, { Link } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import axios from "axios"
 import "./Music.css";
 
+function Music(props) {
 
-
-function MusicProfile(props) {
-  console.log("Beyonce > Riri")
     const remove = (artistName) => { 
         let encodedArtistName = encodeURI(artistName)
         axios
@@ -27,10 +26,16 @@ function MusicProfile(props) {
           <div className="card-body">
             <h5 className="card-title">{album.title}</h5>
             <p className="card-text">{album.artistName}</p>
-            <a className="btn btn-primary" href={`/updatemusic/${encodeURI(album.artistName)}`}>
+            {/* <a className="btn btn-primary" href={`/updatemusic/${encodeURI(album.artistName)}`}>
               Update
-            </a>
-            <a className="btn btn-primary" onClick = {() => remove(album.artistName)} >
+            </a> */}
+            <Link to={`/updatemusic/${encodeURI(album.artistName)}`}>
+              Update
+            </Link>
+            <a
+              className="btn btn-primary"
+              onClick={() => remove(album.artistName)}
+            >
               Delete
             </a>
           </div>
@@ -75,4 +80,4 @@ function MusicProfile(props) {
   );
 }
 
-export default MusicProfile;
+export default Music;
