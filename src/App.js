@@ -22,7 +22,7 @@ function App() {
 
     // Empty array bracket will only run useEffect once, because we are fetching
     //Argument passed here is saying everytime our argument changes the API will be called.
-  }, []);
+  }, [music]);
 
   const searchArtist = (e) => {
     e.preventDefault();
@@ -85,20 +85,11 @@ function App() {
 
       <main>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Music musicList={music} />
           </Route>
 
-          {/* {music.length !== 0 ?
-        
-          <Route
-            path="/"
-            render={() => {
-              return <Music musicList={music} />;
-            }}
-          /> : null } */}
-
-          {music.length !== 0 ? (
+          {/* {music.length !== 0 ? (
             <Route
               exact
               path="/music/:id"
@@ -109,17 +100,14 @@ function App() {
                 return <Musicinfo musicList={music} />;
               }}
             />
-          ) : null}
+          ) : null} */}
+
+          <Route path="/createmusic">
+            <CreateMusic />
+          </Route>
 
           <Route
-            exact
-            path="/createmusic"
-            render={() => {
-              return <CreateMusic />;
-            }}
-          />
-          <Route
-            exact
+            // exact
             path="/updatemusic/:artistName"
             render={() => {
               return <UpdateMusic music={music} />;
@@ -127,16 +115,6 @@ function App() {
           />
         </Switch>
       </main>
-      {/* <Link to="/createmusic">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="button"
-          aria-pressed="false"
-        >
-          Create Album
-        </button>
-      </Link> */}
     </div>
   );
 }
