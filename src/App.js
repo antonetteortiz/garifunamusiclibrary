@@ -85,7 +85,7 @@ function App() {
 
       <main>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/mern-application/">
             <Music musicList={music} />
           </Route>
 
