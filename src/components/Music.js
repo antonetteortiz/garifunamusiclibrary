@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import "./Music.css";
@@ -18,7 +18,34 @@ function Music(props) {
     }
     
  
-  let MusicList = props.musicList.map((album, i) => {
+  let musicList = props.musicList.map((album, i) => {
+    return (
+      <div className="col mb-4 mainBody">
+        <div className="card" style={{ width: "18rem" }} key={i}>
+          <img src={album.artwork} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">{album.title}</h5>
+            <p className="card-text">{album.artistName}</p>
+            {/* <a className="btn btn-primary" href={`/updatemusic/${encodeURI(album.artistName)}`}>
+              Update
+            </a> */}
+            <Link to={`/updatemusic/${encodeURI(album.artistName)}`}>
+              Update
+            </Link>
+            <a
+              className="btn btn-primary"
+              onClick={() => remove(album.artistName)}
+            >
+              Delete
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
+
+  let filteredList = props.filteredList.map((album, i) => {
     return (
       <div className="col mb-4 mainBody">
         <div className="card" style={{ width: "18rem" }} key={i}>
@@ -74,7 +101,14 @@ function Music(props) {
       </div>
       <br />
       <br />
-      <div className="row row-cols-3 row-cols-md-3">{MusicList}</div>
+      <div className="row row-cols-3 row-cols-md-3">
+       {
+         props.artistSearch.length > 1
+         ? filteredList
+         : musicList
+        }
+       
+      </div>
       
     </div>
   );

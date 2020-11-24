@@ -13,8 +13,10 @@ function App() {
   // Anything passed in useState is the default value of that state
   const [music, setMusic] = useState([]);
   const [artistSearch, setArtistSearch] = useState("");
+  const [filteredList, setFilteredList] = useState([]);
   // UseEffect works similarily to componentDidMount
   useEffect(() => {
+  
     let apiUrl = "https://garifunamusic.herokuapp.com/Music";
     fetch(apiUrl)
       .then((data) => data.json())
@@ -27,22 +29,24 @@ function App() {
   const searchArtist = (e) => {
     e.preventDefault();
     // console.log(e.target.value);
-
     setArtistSearch(e.target.value.toLowerCase());
+
     // console.log("state", artistSearch)
+   
+
     if (artistSearch.length > 1) {
       // console.log("!!!", music)
       let newArtistArr = music.filter((input) =>
         input.artistName.toLowerCase().includes(artistSearch)
       );
       console.log(newArtistArr);
-      setMusic(newArtistArr);
-    } else {
-      let apiUrl = "https://garifunamusic.herokuapp.com/Music";
-      fetch(apiUrl)
-        .then((data) => data.json())
-        .then((music) => setMusic(music));
-    }
+      setFilteredList(newArtistArr);
+    } 
+
+      // let apiUrl = "https://garifunamusic.herokuapp.com/Music";
+      // fetch(apiUrl)
+      //   .then((data) => data.json())
+      //   .then((music) => setMusic(music));
   };
 
   // console.log(music)
@@ -86,7 +90,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/mern-application/">
-            <Music musicList={music} />
+            <Music musicList={music} filteredList={filteredList} artistSearch={artistSearch}/>
           </Route>
 
           {/* {music.length !== 0 ? (

@@ -160,9 +160,9 @@ function CreateMusic() {
             Submit
           </button>
         </form>
-      ) : (
+      ) : 
         <Redirect to="/mern-application" />
-      )}
+      }
     </div>
   );
 }
