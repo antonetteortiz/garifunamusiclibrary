@@ -161,7 +161,7 @@ function CreateMusic() {
           </button>
         </form>
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/mern-application" />
       )}
     </div>
   );

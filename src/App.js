@@ -59,7 +59,7 @@ function App() {
             alt=""
             loading="lazy"
           />
-          <Link to="/"> GariMusic </Link>
+          <Link to="/mern-application"> GariMusic </Link>
           <Link to="/createmusic"> Create Artist </Link>
         </a>
 
