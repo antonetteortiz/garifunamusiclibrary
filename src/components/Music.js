@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Music.css";
@@ -34,6 +34,7 @@ function Music(props) {
               Update
             </Link>
             <a
+              href='/updatemusic/${encodeURI(album.artistName)}'
               className="btn btn-primary"
               onClick={() => remove(album.artistName)}
             >

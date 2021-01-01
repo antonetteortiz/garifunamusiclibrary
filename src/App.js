@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route, Switch, Redirect } from "react-router-dom";
-// import { Navbar } from "reactstrap";
+import { Link, Route, Switch} from "react-router-dom";
 import "./App.css";
 import Music from "./components/Music";
-// import Musicinfo from "./components/Musicinfo";
 import CreateMusic from "./components/CreateMusic";
 import UpdateMusic from "./components/UpdateMusic";
 
@@ -55,7 +53,7 @@ function App() {
       <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand" href="#">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_Garifuna.svg"
+            src="./Flag_of_Garifuna.svg"
             width="30"
             height="30"
             class="d-inline-block align-top"
