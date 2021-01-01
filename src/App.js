@@ -29,6 +29,8 @@ function App() {
   const searchArtist = (e) => {
     e.preventDefault();
     // console.log(e.target.value);
+
+    // Setting the search input to lowercase
     setArtistSearch(e.target.value.toLowerCase());
 
     // console.log("state", artistSearch)
@@ -43,13 +45,10 @@ function App() {
       setFilteredList(newArtistArr);
     } 
 
-      // let apiUrl = "https://garifunamusic.herokuapp.com/Music";
-      // fetch(apiUrl)
-      //   .then((data) => data.json())
-      //   .then((music) => setMusic(music));
+      
   };
 
-  // console.log(music)
+ 
 
   return (
     <div className="body">
@@ -90,6 +89,7 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/mern-application/">
+          {/* Passing on the musicList, filterList and artistSearch as props */}
             <Music musicList={music} filteredList={filteredList} artistSearch={artistSearch}/>
           </Route>
 
